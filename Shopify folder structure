@@ -1,1 +1,8 @@
+1.assets  => 1.style.css
+2.config => 1.setting_data.json 2.setting_schema.json
+3.layout => 1.theme.liquid
+4.sections
+5.snippets
+6.templates => 1.gift_card.liquid 2.index.son
+
 
