@@ -1,0 +1,4 @@
+shopify theme dev --store (theme name ) - clone any theme for update 
+shopify init (Need to cole down theme)
+shopify -v (shopify version check)
+git -v (shopify theme developmetn mendotori for git download and install)
