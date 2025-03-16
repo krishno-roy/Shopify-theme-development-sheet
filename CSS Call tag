@@ -1,0 +1,6 @@
+ {{ 'tailwind.css' | asset_url | stylesheet_tag }}
+ {{ 'style.css' | | asset_url | | stylesheet_tag }}
+
+
+
+for css call this url 
