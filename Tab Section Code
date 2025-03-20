@@ -1,0 +1,46 @@
+<section>
+    <div class="">
+        <div class="tab-section container mx-auto">
+            <!-- Tab Buttons -->
+            <div class="flex justify-between items-center border-b border-gray-300 -pb-3">
+                <button class="text-2xl font-semibold hover:border-b-2 hover:border-black w-full pb-3" data-tab-target="#tab1">Product Details</button>
+                <button class="text-2xl font-semibold hover:border-b-2 hover:border-black w-full pb-3 active-tab" data-tab-target="#tab2">Rating & Review</button>
+                <button class="text-2xl font-semibold hover:border-b-2 hover:border-black w-full pb-3" data-tab-target="#tab3">FAQs</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="mt-6">
+                <div id="tab1" class="tab-content hidden">
+                    <h1 class="text-xl text-gray-500">Product Details Content</h1>
+                </div>
+                <div id="tab2" class="tab-content">
+                    <h1 class="text-xl text-gray-500">Rating & Review Content</h1>
+                </div>
+                <div id="tab3" class="tab-content hidden">
+                    <h1 class="text-xl text-gray-500">FAQs Content</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tabs = document.querySelectorAll('[data-tab-target]');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            function activateTab(tab) {
+                const target = document.querySelector(tab.dataset.tabTarget);
+                tabContents.forEach(content => content.classList.add('hidden'));
+                tabs.forEach(t => t.classList.remove('border-b-2', 'border-black'));
+                target.classList.remove('hidden');
+                tab.classList.add('border-b-2', 'border-black');
+            }
+            activateTab(document.querySelector('[data-tab-target="#tab2"]'));
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    activateTab(tab);
+                });
+            });
+        });
+    </script>
+</section>
