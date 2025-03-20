@@ -1,0 +1,52 @@
+<div>
+    <div class="flex gap-4 pt-5">
+        <div class="bg-[#F0F0F0] py-3 px-6 rounded-full flex space-x-5 text-xl items-center justify-center w-[230px]">
+            <button id="decrease" class="px-2 text-2xl font-bold">-</button>
+            <div id="quantity" class="text-xl">1</div>
+            <button id="increase" class="px-2 text-2xl font-bold">+</button>
+        </div>
+        <div class="w-full">
+            <button id="addToCart" class="py-3 px-6 w-full bg-black text-white rounded-full text-xl font-bold">Add To Cart</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let quantity = 1;
+            const quantityDisplay = document.getElementById("quantity");
+            const decreaseButton = document.getElementById("decrease");
+            const increaseButton = document.getElementById("increase");
+            const addToCartButton = document.getElementById("addToCart");
+
+            // increching quantity
+            increaseButton.addEventListener("click", function () {
+                quantity++;
+                quantityDisplay.textContent = quantity;
+            });
+
+            // decrease quantity
+            decreaseButton.addEventListener("click", function () {
+                if (quantity > 1) {
+                    quantity--;
+                    quantityDisplay.textContent = quantity;
+                }
+            });
+
+            // Add to cart and redirect to cart page
+            addToCartButton.addEventListener("click", function () {
+                // Adding products to Shopify's cart API
+                fetch('/cart/add.js', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        id: YOUR_PRODUCT_VARIANT_ID, //Here you need to enter the variant ID of your product.
+                        quantity: quantity
+                    })
+                }).then(response => response.json())
+                .then(data => {
+                    // Redirect to cart page when successfully added to cart
+                    window.location.href = "/cart";
+                });
+            });
+        });
+    </script>
+</div>
